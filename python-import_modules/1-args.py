@@ -1,10 +1,11 @@
 from sys import argv
-
 if __name__ == "__main__":
-    num_args = len(argv) - 1  
-    print("Number of argument{}: {}".format("s" if num_args != 1 else "", num_args), end="")
-    print(":", end="\n" if num_args > 0 else ".")
-
-    for i, arg in enumerate(argv[1:], start=1):
-        print("{}: {}".format(i, arg))
-        
+    if len(argv) == 2:
+        print("{} argument:".format(len(argv) - 1))
+        print("{}: {}".format(1, argv.__getitem__(1)))
+    elif len(argv) > 2:
+        print("{} arguments:".format(len(argv) - 1))
+        for i in range(1, len(argv)):
+            print("{}: {}".format(i, argv.__getitem__(i)))
+    else:
+        print("{} arguments.".format(len(argv) - 1))
