@@ -6,3 +6,4 @@ TASK
 3. Everything can be imported
    4.Integers division with debug
 4. Raise exception
+5. Raise a message
