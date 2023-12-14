@@ -17,8 +17,7 @@ class Square:
         self.__size = size
 
 # Example usage:
-try:
-    mysquare = Square(5)
-    print(mysquare.__size)  # Accessing __size directly (not recommended)
-except Exception as e:
-    print(e)
+
+my_square = Square()
+print(type(my_square))
+print(my_square.__dict__)
