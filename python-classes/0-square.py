@@ -10,4 +10,5 @@ class Square:
 my_square = Square(3)
 
 # Print the type and dictionary representation of the square
-print(type(my_square))
+
+print(my_square.__dict__)
