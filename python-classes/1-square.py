@@ -44,7 +44,7 @@ class Square:
 
 # Example usage:
 try:
-    mysquare = Square(89)
+    mysquare = Square(0)
     print(type(mysquare))
     print(mysquare.dict_())
 except Exception as e:
