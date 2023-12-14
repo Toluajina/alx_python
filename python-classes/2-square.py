@@ -35,7 +35,7 @@ class Square:
 
 # Example usage:
 try:
-    mysquare = Square(3)
+    mysquare = Square(size)
     print(mysquare.area())
 except Exception as e:
     print(e)
