@@ -43,9 +43,16 @@ class Square:
         return {"_Square__size": self.__size}
 
 # Example usage:
+my_square = Square(3)
+print(type(my_square))
+print(my_square.__dict__)
+
 try:
-    mysquare = Square(0)
-    print(type(mysquare))
-    print(mysquare.dict_())
+    print(my_square.size)
+except Exception as e:
+    print(e)
+
+try:
+    print(my_square.__size)
 except Exception as e:
     print(e)
