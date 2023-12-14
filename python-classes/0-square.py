@@ -1,7 +1,6 @@
 class Square:
     def __init__(self, size):
         self.__size = size
-Square = __import__('0-square').Square
 
 # Example usage:
 # Instantiate a square with size 3
@@ -13,3 +12,4 @@ def get_size(self):
 
 # Print the type and dictionary representation of the square
 print(type(my_square))
+print(my_square.__dict__)
