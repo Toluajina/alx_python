@@ -40,11 +40,11 @@ class Square:
         Returns:
         - dict: A dictionary containing the size of the square.
         """
-        return {"size": self.__size}
+        return {"_Square__size": self.__size}
 
 # Example usage:
 try:
-    mysquare = Square(-89)
+    mysquare = Square(89)
     print(type(mysquare))
     print(mysquare.dict_())
 except Exception as e:
