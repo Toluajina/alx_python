@@ -24,28 +24,36 @@ class Square:
         # Private instance attribute
         self.__size = size
 
-    def get_size(self):
-        """
-        Get the size of the square.
-
-        Returns:
-        - int: The size of the square.
-        """
-        return self.__size
-
-    def dict_(self):
-        """
-        Returns a dictionary representation of the square.
-
-        Returns:
-        - dict: A dictionary containing the size of the square.
-        """
-        return {"_Square__size": self.__size}
-
 # Example usage:
-try:
-    mysquare = Square(0)
-    print(type(mysquare))
-    print(mysquare.dict_())
-except Exception as e:
-    print(e)
+if __name__ == "__main__":
+    my_square_1 = Square(3)
+    print(type(my_square_1))
+    print(my_square_1.__dict__)
+
+    my_square_2 = Square()
+    print(type(my_square_2))
+    print(my_square_2.__dict__)
+
+    try:
+        print(my_square_1.size)
+    except Exception as e:
+        print(e)
+
+    try:
+        print(my_square_1.__size)
+    except Exception as e:
+        print(e)
+
+    try:
+        my_square_3 = Square("3")
+        print(type(my_square_3))
+        print(my_square_3.__dict__)
+    except Exception as e:
+        print(e)
+
+    try:
+        my_square_4 = Square(-89)
+        print(type(my_square_4))
+        print(my_square_4.__dict__)
+    except Exception as e:
+        print(e)
