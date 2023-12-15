@@ -1,4 +1,4 @@
-class Square:
+class Square(object):
     def __init__(self, size):
         """
         Initializes a new instance of the Square class with the given size.
@@ -22,6 +22,3 @@ def get_size(self):
 # Print the type and dictionary representation of the square
 print(type(my_square))
 print(my_square.__dict__)
-
-# Access the size using the get_size method
-print("Size of the square:", get_size(my_square))
