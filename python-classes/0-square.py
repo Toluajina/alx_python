@@ -10,7 +10,7 @@ class Square:
 
 # Example usage:
 # Instantiate a square with size 5
-my_square = Square(5)
+my_square = Square(3)
 
 # Attempting to access the size directly will result in an AttributeError
 # print(my_square.__size)  # This line will raise an AttributeError
