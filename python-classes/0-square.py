@@ -12,3 +12,8 @@ class Square:
         elif size < 0:
             raise ValueError("size must be >= 0")
         self.__size = size
+
+        my_square = Square(3)
+
+print(type(my_square))
+print(my_square.__dict__)
