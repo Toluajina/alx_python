@@ -1,58 +1,17 @@
-class Square:
-    """
-    A class that defines a square.
+"""Define a class Square."""
 
-    Attributes:
-    - __size (int): Private attribute representing the size of the square.
-    """
+
+class Square:
+    """Represent a square."""
 
     def __init__(self, size=0):
-        """
-        Initializes a new instance of the Square class.
+        """Initialize a new Square.
 
-        Parameters:
-        - size (int, optional): The size of the square. Defaults to 0.
+        Args:
+            size (int): The size of the new square.
         """
-        # Validate that size is an integer
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
-
-        # Validate that size is non-negative
-        if size < 0:
+        elif size < 0:
             raise ValueError("size must be >= 0")
-
-        # Private instance attribute
         self.__size = size
-
-    def get_size(self):
-        """
-        Get the size of the square.
-
-        Returns:
-        - int: The size of the square.
-        """
-        return self.__size
-
-    def dict_(self):
-        """
-        Returns a dictionary representation of the square.
-
-        Returns:
-        - dict: A dictionary containing the size of the square.
-        """
-        return {"_Square__size": self.__size}
-
-# Example usage:
-my_square = Square(3)
-print(type(my_square))
-print(my_square.__dict__)
-
-try:
-    print(my_square.size)
-except Exception as e:
-    print(e)
-
-try:
-    print(my_square.__size)
-except Exception as e:
-    print(e)
