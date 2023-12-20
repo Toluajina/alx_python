@@ -11,11 +11,11 @@ personal_access_token = sys.argv[2]
 # GitHub API endpoint for the authenticated user
 url = 'https://api.github.com/user'
 
-# Set up the authentication using Basic Authentication with a personal access token
-auth = (username, personal_access_token)
+# Set up the authentication using the personal access token in the Authorization header
+headers = {'Authorization': f'Bearer {personal_access_token}'}
 
 # Send a request to the GitHub API
-response = requests.get(url, auth=auth)
+response = requests.get(url, headers=headers)
 
 # Check if the request was successful (status code 200)
 if response.status_code == 200:
