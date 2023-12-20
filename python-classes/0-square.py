@@ -7,8 +7,11 @@ class Square(object):
             size: The size of the square.
         """
         self.__size = size
-
 my_square = Square()
+
+def get_size(self):
+    return self.__size
+
 
 print(type(my_square))
 print(my_square.__dict__)
