@@ -1,14 +1,19 @@
-"""Displays the X-Request-Id header variable of a request to a given URL.
-
-Usage: ./1-hbtn_header.py <URL>
-"""
+import requests
 import sys
-import urllib.request
 
+if len(sys.argv) != 2:
+    print("Usage: python script.py <URL>")
+    sys.exit(1)
 
-if __name__ == "__main__":
-    url = sys.argv[1]
+url = sys.argv[1]
+response = requests.get(url)
 
-    request = urllib.request.Request(url)
-    with urllib.request.urlopen(request) as response:
-        print(dict(response.headers).get("X-Request-Id"))
+# Check if the request was successful (status code 200)
+if response.status_code == 200:
+    x_request_id = response.headers.get('X-Request-Id')
+    if x_request_id:
+        print(x_request_id)
+    else:
+        print("No X-Request-Id found in the response headers.")
+else:
+    print("Error: Unable to fetch the URL. Status code:", response.status_code)
