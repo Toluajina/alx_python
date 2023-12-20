@@ -1,5 +1,5 @@
 class Square(object):
-    def __init__(self, size):
+    def __init__(self, size=0):
         """
         Initializes a new instance of the Square class with the given size.
 
@@ -10,7 +10,7 @@ class Square(object):
 
 # Example usage:
 # Instantiate a square with size 3
-mysquare = Square(3)
+mysquare = Square()
 
 # Print the type and dictionary representation of the square
 print(mysquare.__dict__)
