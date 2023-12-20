@@ -7,6 +7,10 @@ if len(sys.argv) != 2:
 
 url = sys.argv[1]
 
+# Add the 'http://' schema if missing
+if not url.startswith('http://') and not url.startswith('https://'):
+    url = 'http://' + url
+
 # Send a request to the URL
 response = requests.get(url)
 
