@@ -14,5 +14,3 @@ class BaseGeometry:
         """
         raise Exception('area() is not implemented')
     
-    # Check if 'area' is in the attributes of the class
-class_attributes = dir(BaseGeometry)
