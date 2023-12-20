@@ -6,3 +6,4 @@ TASK
 3. Only sub class of
 4. Geometry module
 5. Improve Geometry
+6. Integer validator
