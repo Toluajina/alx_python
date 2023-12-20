@@ -1,5 +1,7 @@
 Python - Inheritance
 TASK
-Exact same object
-Same class or inherit from
-Only sub class of
+
+1. Exact same object
+2. Same class or inherit from
+3. Only sub class of
+4. Geometry module
