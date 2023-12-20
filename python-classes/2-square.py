@@ -6,7 +6,7 @@ class Square:
         Parameters:
             size (int): The size of the square. Default is 0.
         """
-        self.__size
+        self.__size = 0  # Initialize with a default size of 0 to handle non-integer input
         self.size = size  # Set the size using the property setter
 
     @property
