@@ -11,9 +11,6 @@ response = requests.get(url)
 # Check if the request was successful (status code 200)
 if response.status_code == 200:
     x_request_id = response.headers.get('X-Request-Id')
-    if x_request_id:
-        print(x_request_id)
-    else:
-        print("No X-Request-Id found in the response headers.")
+    print(x_request_id)
 else:
     print("Error: Unable to fetch the URL. Status code:", response.status_code)
