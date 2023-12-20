@@ -21,6 +21,6 @@ response = requests.get(url, auth=auth)
 if response.status_code == 200:
     user_data = response.json()
     user_id = user_data.get('id')
-    print("Your GitHub user id is:", user_id)
+    print(user_id)
 else:
     print("Error: Unable to fetch GitHub user information. Status code:", response.status_code)
