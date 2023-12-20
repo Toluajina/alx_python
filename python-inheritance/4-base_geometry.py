@@ -16,4 +16,3 @@ class BaseGeometry:
     
     # Check if 'area' is in the attributes of the class
 class_attributes = dir(BaseGeometry)
-print(class_attributes)
