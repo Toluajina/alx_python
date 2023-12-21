@@ -8,3 +8,4 @@ TASK
 5. Improve Geometry
 6. Integer validator
 7. Rectangle
+8. Full rectangle
