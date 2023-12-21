@@ -1,8 +1,11 @@
-"""Defines a class Rectangle that inherits from BaseGeometry."""
-
 class BaseGeometry:
     def area(self):
-        """Placeholder for the area method."""
+        """
+        Placeholder for the area method.
+
+        Raises:
+        - NotImplementedError: If the area method is not implemented in the subclass.
+        """
         raise NotImplementedError("area() method is not implemented")
 
     def integer_validator(self, name, value):
