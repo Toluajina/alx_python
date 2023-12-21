@@ -1,3 +1,5 @@
+"""Defines a class Rectangle that inherits from BaseGeometry."""
+
 class BaseGeometry:
     def area(self):
         """
