@@ -1,11 +1,9 @@
-class BaseGeometry:
-    """
-    Represents base geometry.
+"""Defines a base geometry class BaseGeometry."""
 
-    Public instance method:
-        - area(self): Raises an Exception with the message "area() is not implemented."
-    """
+
+class BaseGeometry:
+    """Represent base geometry."""
 
     def area(self):
-        """Public instance method to raise an Exception."""
+        """Not implemented."""
         raise Exception("area() is not implemented")
