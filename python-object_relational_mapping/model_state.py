@@ -1,36 +1,32 @@
-from sqlalchemy import create_engine, Column, Integer, String
+#!/usr/bin/python3
+"""
+Module that contains the class definition of a State
+"""
+
+from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# Create an SQLite database in-memory (you can replace it with your MySQL connection details)
-DATABASE_URI = 'sqlite:///:memory:'
-engine = create_engine(DATABASE_URI, echo=True)
 Base = declarative_base()
 
 class State(Base):
-    """State class representing the states table."""
+    """
+    State class that links to the MySQL table states
+    """
     __tablename__ = 'states'
-
-    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     name = Column(String(128), nullable=False)
 
-# Create the table in the database
-Base.metadata.create_all(engine)
+if __name__ == "__main__":
+    # Connect to MySQL server running on localhost at port 3306
+    engine = create_engine('mysql+mysqldb://username:password@localhost:3306/database')
 
-# Insert multiple sample states into the states table
-states_to_insert = [
-    State(name='California'),
-    State(name='Arizona'),
-    State(name='Texas'),
-    State(name='New York'),
-    State(name='Nevada'),
-]
+    # Create all the tables in the database
+    Base.metadata.create_all(engine)
 
-session = sessionmaker(bind=engine)()
-session.add_all(states_to_insert)
-session.commit()
-
-# Query and print all states from the states table
-result = session.query(State).all()
-for state in result:
-    print(f"{state.id}: {state.name}")
+    # Uncomment the following lines if you want to add an example entry to the states table
+    # Session = sessionmaker(bind=engine)
+    # session = Session()
+    # new_state = State(name='Example State')
+    # session.add(new_state)
+    # session.commit()
