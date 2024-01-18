@@ -6,9 +6,11 @@ class BaseGeometry:
     def area(self):
         raise Exception("area() is not implemented")
 
-# Example usage:
+# Testing the class
 try:
-    geometry = BaseGeometry()
-    geometry.area()
+    obj = BaseGeometry()
+    obj.area()  # This should raise an exception
 except Exception as e:
-    print(e)
+    print(f"[Exception] {e}")
+
+    
