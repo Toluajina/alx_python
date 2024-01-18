@@ -1,10 +1,29 @@
-"""Start link class to table in database 
-"""
-import sys
-from model_state import Base, State
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
-from sqlalchemy import (create_engine)
+# Create an SQLite database in-memory (you can replace it with your MySQL connection details)
+DATABASE_URI = 'sqlite:///:memory:'
+engine = create_engine(DATABASE_URI, echo=True)
+Base = declarative_base()
 
-if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
-    Base.metadata.create_all(engine)
+class State(Base):
+    """State class representing the states table."""
+    __tablename__ = 'states'
+
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
+    name = Column(String(128), nullable=False)
+
+# Create the table in the database
+Base.metadata.create_all(engine)
+
+# Insert some sample data into the states table
+session = sessionmaker(bind=engine)()
+new_state = State(name='New York')
+session.add(new_state)
+session.commit()
+
+# Query the states table
+result = session.query(State).all()
+for state in result:
+    print(f"State ID: {state.id}, Name: {state.name}")
