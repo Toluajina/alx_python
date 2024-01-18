@@ -17,13 +17,20 @@ class State(Base):
 # Create the table in the database
 Base.metadata.create_all(engine)
 
-# Insert some sample data into the states table
+# Insert multiple sample states into the states table
+states_to_insert = [
+    State(name='California'),
+    State(name='Arizona'),
+    State(name='Texas'),
+    State(name='New York'),
+    State(name='Nevada'),
+]
+
 session = sessionmaker(bind=engine)()
-new_state = State(name='New York')
-session.add(new_state)
+session.add_all(states_to_insert)
 session.commit()
 
-# Query the states table
+# Query and print all states from the states table
 result = session.query(State).all()
 for state in result:
-    print(f"State ID: {state.id}, Name: {state.name}")
+    print(f"{state.id}: {state.name}")
