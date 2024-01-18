@@ -4,13 +4,20 @@
 
 class BaseGeometry:
     def area(self):
+        """Raises an exception with the message 'area() is not implemented.'"""
         raise Exception("area() is not implemented")
 
-# Testing the class
+# Test the implementation
 try:
-    obj = BaseGeometry()
-    obj.area()  # This should raise an exception
+    # Instantiate an object of BaseGeometry
+    geometry = BaseGeometry()
+
+    # Call the area() method, which will raise an exception
+    geometry.area()
+
 except Exception as e:
+    # Print the expected output
     print(f"[Exception] {e}")
 
-    
+# Print the attributes of the object (as per the test case)
+print(dir(geometry))
