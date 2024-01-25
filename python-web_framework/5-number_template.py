@@ -2,35 +2,16 @@
 Flask web application with six routes.
 """
 
-from flask import Flask, render_template
+from flask import Flask, render_template_string
 
 app = Flask(__name__)
-app.url_map.strict_slashes = False
 
-@app.route('/')
-def hello_hbnb():
-    return 'Hello HBNB!'
+# ... other routes ...
 
-@app.route('/hbnb')
-def hbnb():
-    return 'HBNB'
-
-@app.route('/c/<text>')
-def c(text):
-    return 'C {}'.format(text.replace('_', ' '))
-
-@app.route('/python/')
-@app.route('/python/<text>')
-def python(text='is cool'):
-    return 'Python {}'.format(text.replace('_', ' '))
-
-@app.route('/number/<int:n>')
-def number(n):
-    return '{} is a number'.format(n)
-
-@app.route('/number_template/<int:n>')
+@app.route('/number_template/<int:n>', strict_slashes=False)
 def number_template(n):
-     return render_template('templates/5-number.html', n=n)
+    html_content = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>Number: {{ n }}</title>\n</head>\n<body>\n<h1>Number: {{ n }}</h1>\n</body>\n</html>'
+    return render_template_string(html_content, n=n)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
