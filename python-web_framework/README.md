@@ -78,3 +78,9 @@ H1 tag: “Number: n” inside the tag BODY
 /number_odd_or_even/<n>: display a HTML page only if n is an integer:
 H1 tag: “Number: n is even|odd” inside the tag BODY
 You must use the option strict_slashes=False in your route definition
+
+Python - Web framework - 2
+
+TASKS
+
+1.
