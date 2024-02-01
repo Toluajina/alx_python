@@ -1,9 +1,9 @@
-"""Defines a base geometry class BaseGeometry."""
-
-
 class BaseGeometry:
-    """Represent base geometry."""
-
     def area(self):
-        """Not implemented."""
-        raise Exception("area() is not implemented")
+        pass
+
+# Create an instance of BaseGeometry
+bg = BaseGeometry()
+
+# Print the attributes of bg using dir()
+print(dir(bg))
