@@ -1,9 +1,12 @@
 class BaseGeometry:
     def area(self):
-        pass
+        raise NotImplementedError("area() is not implemented")
 
 # Create an instance of BaseGeometry
 bg = BaseGeometry()
 
-# Print the attributes of bg using dir()
-print(dir(bg))
+# Try to print the result of bg.area()
+try:
+    print(bg.area())
+except Exception as e:
+    print("[{}] {}".format(e.__class__.__name__, e))
