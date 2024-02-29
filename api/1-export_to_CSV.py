@@ -28,6 +28,14 @@ def get_employee_info(employee_id):
 
     print(f"CSV file '{filename}' created successfully.")
 
+    # Check number of tasks in CSV
+    num_tasks_in_csv = len(csv_data) - 1  # Subtract 1 for the header row
+    num_tasks_fetched = len(todo_data)
+    if num_tasks_in_csv == num_tasks_fetched:
+        print("Number of tasks in CSV: OK")
+    else:
+        print("Number of tasks in CSV: Incorrect")
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python3 script_name.py <employee_id>")
