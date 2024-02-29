@@ -1,9 +1,31 @@
+"""
+This script exports TODO list data for a given employee from a REST API to a JSON file.
+
+Requirements:
+- The script accepts an integer as a parameter, which is the employee ID.
+- It retrieves information about tasks owned by the employee from the API.
+- It exports the data in JSON format.
+- The output file format is USER_ID.json.
+
+Usage:
+python3 script_name.py <employee_id>
+"""
+
 import sys
 import json
 import requests
 
 
 def export_to_json(employee_id):
+    """
+    Export TODO list data for the given employee to a JSON file.
+
+    Args:
+        employee_id (int): The ID of the employee whose TODO list data is to be exported.
+
+    Returns:
+        None
+    """
     # Retrieve employee details
     employee_response = requests.get(f"https://jsonplaceholder.typicode.com/users/{employee_id}")
     employee_data = employee_response.json()
