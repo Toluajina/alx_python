@@ -11,9 +11,9 @@ Usage:
 python3 script_name.py <employee_id>
 """
 
-import sys
 import json
 import requests
+import sys
 
 
 def export_to_json(employee_id):
