@@ -23,6 +23,18 @@ def export_to_csv(employee_id):
             writer.writerow([user_id, username, task['completed'], task['title']])
 
 
+def count_tasks_in_csv(employee_id):
+    filename = f"{employee_id}.csv"
+    try:
+        with open(filename, 'r') as f:
+            reader = csv.reader(f)
+            # Exclude header row
+            num_tasks = sum(1 for _ in reader) - 1
+            print(f"Number of tasks in CSV: {num_tasks}")
+    except FileNotFoundError:
+        print("File not found.")
+
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python3 script_name.py <employee_id>")
@@ -30,3 +42,4 @@ if __name__ == "__main__":
 
     employee_id = int(sys.argv[1])
     export_to_csv(employee_id)
+    count_tasks_in_csv(employee_id)
