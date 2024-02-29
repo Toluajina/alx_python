@@ -3,10 +3,11 @@ import requests
 import sys
 
 
-def export_to_csv(employee_id):
+def get_employee_info(employee_id):
     # Retrieve employee details
     employee_response = requests.get(f"https://jsonplaceholder.typicode.com/users/{employee_id}")
     employee_data = employee_response.json()
+    employee_name = employee_data['name']
     user_id = employee_data['id']
     username = employee_data['username']
 
@@ -14,26 +15,18 @@ def export_to_csv(employee_id):
     todo_response = requests.get(f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos")
     todo_data = todo_response.json()
 
+    # Prepare CSV data
+    csv_data = [["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]]
+    for task in todo_data:
+        csv_data.append([user_id, username, task['completed'], task['title']])
+
     # Write data to CSV file
     filename = f"{user_id}.csv"
     with open(filename, mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
-        for task in todo_data:
-            writer.writerow([user_id, username, task['completed'], task['title']])
+        writer.writerows(csv_data)
 
-
-def count_tasks_in_csv(employee_id):
-    filename = f"{employee_id}.csv"
-    try:
-        with open(filename, 'r') as f:
-            reader = csv.reader(f)
-            # Exclude header row
-            num_tasks = sum(1 for _ in reader) - 1
-            print(f"Number of tasks in CSV: {num_tasks}")
-    except FileNotFoundError:
-        print("File not found.")
-
+    print(f"CSV file '{filename}' created successfully.")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -41,5 +34,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
     employee_id = int(sys.argv[1])
-    export_to_csv(employee_id)
-    count_tasks_in_csv(employee_id)
+    get_employee_info(employee_id)
