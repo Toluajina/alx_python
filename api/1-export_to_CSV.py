@@ -34,7 +34,7 @@ def get_employee_info(employee_id):
             task_completed_status = 'Completed' if todo['completed'] else 'Not Completed'
             writer.writerow({'USER_ID': user_id, 'USERNAME': username, 'TASK_COMPLETED_STATUS': task_completed_status, 'TASK_TITLE': todo['title']})
 
-    print(f"Data exported to {filename}")
+    print(f"Number of tasks in CSV: {len(todos_data)}")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
