@@ -1,48 +1,16 @@
+"""Script to export data in the CSV format"""
 import csv
-import requests
+import requests as r
 import sys
 
-def get_employee_info(employee_id):
-    # Retrieve employee details
-    employee_response = requests.get(f"https://jsonplaceholder.typicode.com/users/{employee_id}")
-    employee_data = employee_response.json()
-    employee_name = employee_data['name']
-
-    # Retrieve employee's todo list
-    todo_response = requests.get(f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos")
-    todo_data = todo_response.json()
-
-    # Calculate completed tasks
-    completed_tasks = [task for task in todo_data if task['completed']]
-    num_completed_tasks = len(completed_tasks)
-    total_tasks = len(todo_data)
-
-    # Print employee todo list progress
-    print(f"Employee {employee_name} is done with tasks({num_completed_tasks}/{total_tasks}):")
-    for task in completed_tasks:
-        print(f"\t{task['title']}")  # Adjusted format to include a tab before task title
-
-    # Export data to CSV
-    filename = f"{employee_id}.csv"
-    with open(filename, 'w', newline='') as csvfile:  # Use 'w' mode to write to the file
-        fieldnames = ['USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS', 'TASK_TITLE']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-
-        for task in todo_data:
-            writer.writerow({
-                'USER_ID': employee_id,
-                'USERNAME': employee_name,
-                'TASK_COMPLETED_STATUS': 'Completed' if task['completed'] else 'Not Completed',
-                'TASK_TITLE': task['title']
-            })
-
-    print("Number of tasks in CSV: OK")  # Print confirmation message after exporting data
-
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python3 script_name.py <employee_id>")
-        sys.exit(1)
+    user_id = sys.argv[1]
+    url = "https://jsonplaceholder.typicode.com/"
+    usr = r.get(url + "users/{}".format(user_id)).json()
+    username = usr.get("username")
+    to_do = r.get(url + "todos", params={"userId": user_id}).json()
 
-    employee_id = int(sys.argv[1])
-    get_employee_info(employee_id)
+    with open("{}.csv".format(user_id), "w", newline="") as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        [writer.writerow([user_id, username, elm.get("completed"),
+                          elm.get("title")]) for elm in to_do]
