@@ -1,7 +1,3 @@
-"""
-Check student .CSV output of user information
-"""
-
 import csv
 import requests
 import sys
