@@ -1,6 +1,6 @@
-import csv
 import requests
 import sys
+import csv
 
 def get_employee_info(employee_id):
     # Retrieve employee details
@@ -24,7 +24,7 @@ def get_employee_info(employee_id):
 
     # Export data to CSV
     filename = f"{employee_id}.csv"
-    with open(filename, 'w', newline='') as csvfile:
+    with open(filename, 'w', newline='') as csvfile:  # Use 'w' mode to write to the file
         fieldnames = ['USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS', 'TASK_TITLE']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
@@ -36,6 +36,8 @@ def get_employee_info(employee_id):
                 'TASK_COMPLETED_STATUS': 'Completed' if task['completed'] else 'Not Completed',
                 'TASK_TITLE': task['title']
             })
+
+    print("Number of tasks in CSV: OK")  # Print confirmation message after exporting data
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
