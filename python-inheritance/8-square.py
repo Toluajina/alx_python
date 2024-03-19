@@ -1,16 +1,15 @@
-"""Rectangle class Module"""
-BaseGeometry = __import__("5-base_geometry").BaseGeometry
+"""Square class Module"""
+Rectangle = __import__("7-rectangle").Rectangle
+
 
 class Square(Rectangle):
-    """Represent a square."""
-
+    """Square class"""
     def __init__(self, size):
-        """Initialize a new square.
-
-        Args:
-            size (int): The size of the new square.
-        """
+        """Method for initializing a square"""
         self.integer_validator("size", size)
-        super().__init__(size, size)
         self.__size = size
-        
+        super().__init__(size, size)
+
+    def area(self):
+        """Method that returns area of a square"""
+        return self.__size ** 2
