@@ -1,7 +1,7 @@
 """BaseGeometry class Module"""
 
 
-class BaseGeometry():
+class BaseGeometry:
     """BaseGeometry class"""
     def area(self):
         """Method Raises an Exception"""
@@ -13,3 +13,13 @@ class BaseGeometry():
             raise TypeError("{} must be an integer".format(name))
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
+
+
+class Rectangle(BaseGeometry):
+    """Rectangle class, inherits from BaseGeometry"""
+    def __init__(self, width, height):
+        self.__width = width
+        self.__height = height
+        self.integer_validator("width", self.__width)
+        self.integer_validator("height", self.__height)
+
