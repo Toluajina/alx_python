@@ -31,6 +31,12 @@ def export_todo_all_employees():
     
     with open("todo_all_employees.json", "w") as jsonfile:
         json.dump(todo_data, jsonfile)
+    
+    # Check if all users exist in output
+    if len(todo_data) == len(users_data):
+        print("All users found: OK")
+    else:
+        print("Some users are missing from the output.")
 
 if __name__ == "__main__":
     export_todo_all_employees()
