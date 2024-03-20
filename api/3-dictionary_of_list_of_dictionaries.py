@@ -1,6 +1,6 @@
 """Exports to-do list information of all employees to JSON format."""
-import requests
 import json
+import requests
 
 def export_todo_all_employees():
     url_users = "https://jsonplaceholder.typicode.com/users"
